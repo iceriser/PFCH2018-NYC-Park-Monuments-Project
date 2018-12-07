@@ -1,10 +1,15 @@
 import csv
 from namelistfunction import build_name_list
+from wikidatafunction import grab_wikidata
 
-with open ('NYC_Parks_Monuments.csv', 'r', encoding='utf-8') as f:
-    reader = csv.reader(f)
-    results = build_name_list(reader)
+#with open ('NYC_Parks_Monuments.csv', 'r', encoding='utf-8') as f:
+    #reader = csv.reader(f)
+    #results = build_name_list(reader)
 
-    print(results)
+    #print(*results, sep = '\n')
 
-#This currently produces nothing, ask about it in class.
+datagrab = grab_wikidata('Terry Fugate-Wilcox')
+
+print(datagrab)
+
+
