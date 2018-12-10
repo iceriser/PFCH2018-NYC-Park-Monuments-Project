@@ -49,30 +49,43 @@ def grab_wikidata(query):
         #aliasinfo = page.data['aliases']
         #print(aliasinfo)
         #print(datagrab)
-
-        if 'human (Q5)' in datagrab['instance of (P31)']:
-            aliasinfo = page.data['aliases']
-            print(aliasinfo)
-            aliascheck = []
-            for aliases in aliasinfo:
-                comparison = Levenshtein.distance(queryvar, aliases)
+        try:
+            if 'human (Q5)' in datagrab['instance of (P31)']:
+                try:
+                    aliasinfo = page.data['aliases']
+                    print(aliasinfo)
+                except:
+                    print('no aliases')
+                labelinfo = page.data['label']
+                aliascheck = []
+                comparison = Levenshtein.distance(queryvar, labelinfo)
                 if comparison <= 3:
                     aliascheck.append('1')
+                try:    
+                    for aliases in aliasinfo:
+                        comparison2 = Levenshtein.distance(queryvar, aliases)
+                        if comparison2 <= 3:
+                            aliascheck.append('1')
+                        else:
+                            aliascheck.append('0')
+                except:
+                    print('no aliases')
+                    
+                if '1' in aliascheck:            
+                    if 'occupation (P106)' in datagrab and 'sculptor (Q1281618)' in datagrab['occupation (P106)']:
+                        print('occupation match')
+                        name_data.append(datagrab)
+                    elif 'occupation (P106)' in datagrab and 'artist (Q483501)' in datagrab['occupation (P106)']:
+                        print('occupation match')
+                        name_data.append(datagrab)
+                    else:
+                        print('not an artist')
                 else:
-                    aliascheck.append('0')
-            if '1' in aliascheck:            
-                if 'occupation (P106)' in datagrab and 'sculptor (Q1281618)' in datagrab['occupation (P106)']:
-                    print('occupation match')
-                    name_data.append(datagrab)
-                elif 'occupation (P106)' in datagrab and 'artist (Q483501)' in datagrab['occupation (P106)']:
-                    print('occupation match')
-                    name_data.append(datagrab)
-                else:
-                    print('not an artist')
+                    print('no matching names')
             else:
-                print('no matching names')
-        else:
-            print('not a person')
+                print('not a person')
+        except:
+            print('insufficient data')
         i=i+1
     #print(name_data)    
     return name_data

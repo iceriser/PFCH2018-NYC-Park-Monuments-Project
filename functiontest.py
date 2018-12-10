@@ -8,7 +8,7 @@ from wikidatafunction import grab_wikidata
 
     #print(*results, sep = '\n')
 
-datagrab = grab_wikidata('frederick macmonnies')
+datagrab = grab_wikidata('Philip Martiny')
 
 print(datagrab)
 

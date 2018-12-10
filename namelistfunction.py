@@ -1,5 +1,6 @@
 import csv
 import re
+import string
 
 def build_name_list(art_data):
 
@@ -11,13 +12,15 @@ def build_name_list(art_data):
     #x = 0
     for row in art_data:
         #while x < 10:
-        clean_names = re.compile('[;&]').split(row[19])
+        clean_names = re.compile('[;&/]').split(row[19])
         for name in clean_names:
-            if name != '' and name not in artist_list:
+            if name != '' and name not in artist_list and name != 'sculptor':
                 artist_list.append(name)
     for name in artist_list:
         name = re.sub('(\(.*\))', '', name)
-        artist_list_clean.append(name)
+        name = string.capwords(name)
+        if name not in artist_list_clean:
+            artist_list_clean.append(name)
        
                
                #x = x + 1
