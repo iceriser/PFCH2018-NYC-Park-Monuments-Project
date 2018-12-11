@@ -17,7 +17,7 @@ def grab_wikidata(query):
         'srsearch' : query,
         'srwhat' : 'text',
         #'type' : 'item',
-        'srlimit' : 500
+        'srlimit' : 10
         }
 
     r = requests.get(endpoint, params = params)
@@ -74,10 +74,48 @@ def grab_wikidata(query):
                 if '1' in aliascheck:            
                     if 'occupation (P106)' in datagrab and 'sculptor (Q1281618)' in datagrab['occupation (P106)']:
                         print('occupation match')
-                        name_data.append(datagrab)
+                        try:
+                            name_data.append(datagrab['country of citizenship (P27)'])
+                        except:
+                            print('no citizenship on record')
+                        try:
+                            name_data.append(datagrab['date of birth (P569)'])
+                        except:
+                            print('no birth date on record')
+                        try:
+                            name_data.append(datagrab['place of birth (P19)'])
+                        except:
+                            print('no birthplace on record')
+                        try:
+                            name_data.append(datagrab['date of death (P570)'])
+                        except:
+                            print('no death date on record')
+                        try:
+                            name_data.append(datagrab['place of death (P20)'])
+                        except:
+                            print('no place of death on record')    
                     elif 'occupation (P106)' in datagrab and 'artist (Q483501)' in datagrab['occupation (P106)']:
                         print('occupation match')
-                        name_data.append(datagrab)
+                        try:
+                            name_data.append(datagrab['country of citizenship (P27)'])
+                        except:
+                            print('no citizenship on record')
+                        try:
+                            name_data.append(datagrab['date of birth (P569)'])
+                        except:
+                            print('no birth date on record')
+                        try:
+                            name_data.append(datagrab['place of birth (P19)'])
+                        except:
+                            print('no birthplace on record')
+                        try:
+                            name_data.append(datagrab['date of death (P570)'])
+                        except:
+                            print('no death date on record')
+                        try:
+                            name_data.append(datagrab['place of death (P20)'])
+                        except:
+                            print('no place of death on record')
                     else:
                         print('not an artist')
                 else:

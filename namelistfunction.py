@@ -16,6 +16,7 @@ def build_name_list(art_data):
         for name in clean_names:
             if name != '' and name not in artist_list and name != 'sculptor':
                 artist_list.append(name)
+    print(artist_list)
     for name in artist_list:
         name = re.sub('(\(.*\))', '', name)
         name = string.capwords(name)
