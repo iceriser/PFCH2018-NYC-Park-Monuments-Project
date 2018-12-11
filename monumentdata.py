@@ -2,6 +2,7 @@ import csv
 from namelistfunction import build_name_list
 from wikidatafunction import grab_wikidata
 from csvdatafunction import grab_csv_data
+import json
 
 with open ('NYC_Parks_Monuments.csv', 'r', encoding='utf-8') as f:
     reader = csv.reader(f)
@@ -21,4 +22,6 @@ for name in name_list:
     print(i)
     i=i+1
 
-print(all_data)#this crashes idle, make it write instead
+with open('monumentdata.json', 'w') as outfile:
+    json.dump(all_data, outfile)
+
