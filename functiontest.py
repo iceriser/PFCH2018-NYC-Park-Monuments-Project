@@ -9,16 +9,22 @@ with open ('NYC_Parks_Monuments.csv', 'r', encoding='utf-8') as f:
 
     #print(*results, sep = '\n')
 
-datagrab = grab_wikidata('terry fugate-wilcox')
+#datagrab = grab_wikidata('Frederick MacMonnies')
+#if not datagrab:
+    #datagrab.append('n/a')
+    #datagrab.append('n/a')
+    #datagrab.append('n/a')
+    #datagrab.append('n/a')
+    #datagrab.append('n/a')
 
-print(datagrab)
+#print(datagrab)
 
 test_data = []    
 
-#for name in results:
-    #csvdata = grab_csv_data(name)
-    #test_data.append(csvdata)
+for name in results:
+    csvdata = grab_csv_data(name)
+    test_data.append(csvdata)
 
-#print(test_data)    
+print(test_data)    
 
 

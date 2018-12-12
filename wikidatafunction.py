@@ -30,7 +30,13 @@ def grab_wikidata(query):
 
     i = 0
 
-    name_data = []
+    name_data = {
+        'birthdate' : 0,
+        'birthplace' : 0,
+        'death date' : 0,
+        'death place' : 0
+        }
+        
 
     for name in rdict['query']['search']:
 
@@ -75,47 +81,47 @@ def grab_wikidata(query):
                     if 'occupation (P106)' in datagrab and 'sculptor (Q1281618)' in datagrab['occupation (P106)']:
                         print('occupation match')
                         try:
-                            name_data.append(datagrab['country of citizenship (P27)'])
-                        except:
-                            print('no citizenship on record')
-                        try:
-                            name_data.append(datagrab['date of birth (P569)'])
+                            name_data['birthdate'] = datagrab['date of birth (P569)']
                         except:
                             print('no birth date on record')
+                            name_data['birthdate'] = 'n/a'
                         try:
-                            name_data.append(datagrab['place of birth (P19)'])
+                            name_data['birthplace'] = datagrab['place of birth (P19)']
                         except:
                             print('no birthplace on record')
+                            name_data['birthplace'] = 'n/a'
                         try:
-                            name_data.append(datagrab['date of death (P570)'])
+                            name_data['death date'] = datagrab['date of death (P570)']
                         except:
                             print('no death date on record')
+                            name_data['death date'] = 'n/a'
                         try:
-                            name_data.append(datagrab['place of death (P20)'])
+                            name_data['death place'] = datagrab['place of death (P20)']
                         except:
-                            print('no place of death on record')    
+                            print('no place of death on record')
+                            name_data['death place'] = 'n/a'
                     elif 'occupation (P106)' in datagrab and 'artist (Q483501)' in datagrab['occupation (P106)']:
                         print('occupation match')
                         try:
-                            name_data.append(datagrab['country of citizenship (P27)'])
-                        except:
-                            print('no citizenship on record')
-                        try:
-                            name_data.append(datagrab['date of birth (P569)'])
+                            name_data['birthdate'] = datagrab['date of birth (P569)']
                         except:
                             print('no birth date on record')
+                            name_data['birthdate'] = 'n/a'
                         try:
-                            name_data.append(datagrab['place of birth (P19)'])
+                            name_data['birthplace'] = datagrab['place of birth (P19)']
                         except:
                             print('no birthplace on record')
+                            name_data['birthplace'] = 'n/a'
                         try:
-                            name_data.append(datagrab['date of death (P570)'])
+                            name_data['death date'] = datagrab['date of death (P570)']
                         except:
                             print('no death date on record')
+                            name_data['death date'] = 'n/a'
                         try:
-                            name_data.append(datagrab['place of death (P20)'])
+                            name_data['death place'] = datagrab['place of death (P20)']
                         except:
                             print('no place of death on record')
+                            name_data['death place'] = 'n/a'
                     else:
                         print('not an artist')
                 else:
@@ -125,7 +131,15 @@ def grab_wikidata(query):
         except:
             print('insufficient data')
         i=i+1
-    #print(name_data)    
+    #print(name_data)
+    if name_data['birthdate'] == 0:
+        name_data['birthdate'] = 'n/a'
+    if name_data['birthplace'] == 0:
+        name_data['birthplace'] = 'n/a'
+    if name_data['death date'] == 0:
+        name_data['death date'] = 'n/a'
+    if name_data['death place'] == 0:
+        name_data['death place'] = 'n/a'    
     return name_data
 
    
