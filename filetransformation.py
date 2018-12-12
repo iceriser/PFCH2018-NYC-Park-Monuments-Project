@@ -1,5 +1,6 @@
 import csv
 import json
+import re
 
 merged_data = {
     'artist' : '',
@@ -22,6 +23,8 @@ with open ('monumentdata.json') as json_data, open ('monumentdatafix.json', 'w')
         #print (row[1]['birthdate'])
         merged_data['artist'] = row[0]
         merged_data['birthdate'] = row[1]['birthdate']
+        merged_data['birthdate'] = str(merged_data['birthdate'])
+        merged_data['birthdate'] = re.sub('(-.*)', '', merged_data['birthdate'])
         merged_data['birthplace'] = row[1]['birthplace']
         merged_data['death date'] = row[1]['death date']
         merged_data['death place'] = row[1]['death place']
