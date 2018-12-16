@@ -52,3 +52,7 @@ listed as "Sheet 1.png", "Sheet 2.png", and "Sheet 3.png".
 
 Please also download "NYC Park Monuments Visualization Companion Document.docx" for explanations of and commentary 
 on these visualizations.
+
+
+Any files other than those listed above can be ignored. They were created in testing and don't have anything useful
+to offer.
