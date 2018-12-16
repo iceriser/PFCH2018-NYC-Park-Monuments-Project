@@ -1,6 +1,7 @@
 # PFCH2018-NYC-Park-Monuments-Project
 Repository of files for PFCH final project based on NYC park monuments.
 
+
 Description:
 These scripts are designed to pull information from a publically available csv about New York park
 monuments and combine that information with data harvested from wikidata into a single file. The goal is to 
@@ -16,7 +17,9 @@ then be run through another script to put the information in a form more suitabl
 through programs like Tableau Public.
 
 
+
 Instructions:
+
 If you wish to test the functioning of the script it is important that you download the following files:
 
 NYC_Parks_Monuments.csv: This is used to create the list of artist names and also contains important data
@@ -35,7 +38,9 @@ filetransformation.py: after you run monumentdata.py, you run this script on the
 to create a file more suitable for use with data visualization programs.
 
 
+
 Optional Downloads:
+
 functiontest.py: this script is set up to test the three functions used in monumentdata.py without having
 to run monumentdata.py every time. It could be useful if you'd like to test the functions yourself.
 
@@ -46,12 +51,15 @@ monumentdatafix.json: this is an example of the product of filetransformation.py
 creating your own data visualizations without running the scripts first, you could download this file.
 
 
+
 Data Visualizations:
+
 Some examples of data visualizations created from analysis of monumentdatafix.json can be found on this github, 
 listed as "Sheet 1.png", "Sheet 2.png", and "Sheet 3.png". 
 
 Please also download "NYC Park Monuments Visualization Companion Document.docx" for explanations of and commentary 
 on these visualizations.
+
 
 
 Any files other than those listed above can be ignored. They were created in testing and don't have anything useful
