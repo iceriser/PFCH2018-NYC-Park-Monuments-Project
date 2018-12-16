@@ -145,12 +145,3 @@ def grab_wikidata(query):
    
 
 
-#this searches for the query and displays the wikidata for the first 50 results
-#next step is to set up a loop where the query is the name list items
-#instead of displaying the data, instead saves the information for wikidata items with the career: sculptor (or artist)
-#this data can then be combined with appropriate information from the csv
-#before you push this to github ensure that you actually want to use query instead of wbsearchentities
-#current issues: querying wikidata for a name with a typo produces no search results, if necessary could be remedied manually wbsearchentities uses the suggested search box, not the search page, using query might fix this
-#using query allows access to the search page rather than the recommended items, may allow you to skip levenshtein distance entirely, base resolution entirely off of occupation matching. test tomorrow
-
-#when the name is resolved, it produces false negatives in the occupation (RESOLVED: i'm a tool and misspelled occupation)

@@ -28,6 +28,3 @@ def build_name_list(art_data):
 
     return artist_list_clean
             
-# While loop will later be removed once I'm confident I can resolve csv names with wikidata names.
-
-# Last resort is to use openrefine to clean data manually then use the cleaned data
